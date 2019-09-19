@@ -1,29 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Router, Switch, Redirect, Route } from 'react-router-dom'
-import { Provider, connect } from 'react-redux'
-import { store } from "../libs/configureStore";
+import { Switch, Redirect, Route, BrowserRouter} from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from "./libs/configureStore";
+import { ProtectedRoute } from "./components/protected.route";
+import About from "./components/About";
+import Other from "./components/Other";
 
 function MainRouter(){
-  return(
-      <>
-        <Router>
-          <Switch>
-            <Route></Route>
-            <Route></Route>
-            <Route></Route>
-            <Redirect to='/' />
-          </Switch>
-        </Router>
-      </>
-  )
+    return(
+        <>
+            <div className="App">
+                <Switch>
+                    <Route exact path='/' component={About}></Route>
+                    <ProtectedRoute exact path='/other' component={Other}/>
+                    <Route path="*" component={() => "404 NOT FOUND"} />
+                </Switch>
+            </div>
+        </>
+    )
 }
 
 function App() {
-  <Provider store={store}>
-    <MainRouter />
-  </Provider>
+    return(
+
+        <Provider store={store}>
+            <BrowserRouter>
+                <MainRouter />
+            </BrowserRouter>
+        </Provider>
+    )
 }
 
-export default App;
+export default App

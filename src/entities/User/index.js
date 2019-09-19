@@ -1,6 +1,6 @@
-import * as actions from './user.actions'
-import reducer from './user.reducer'
-import * as types from './user.types'
+import * as actions from './User.actions'
+import reducer from './User.reducer'
+import * as types from './User.types'
 
 export default {
     actions,

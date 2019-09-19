@@ -1,4 +1,4 @@
-import * as TYPES from './user.types'
+import * as TYPES from './User.types'
 
 const initialState = {
     loading: false,

@@ -1,7 +1,8 @@
-import logo from "../../src/logo.svg";
+import logo from "../../../src/logo.svg";
 import React from "react";
+import auth from "../../utils/authtest";
 
-function About() {
+function About(props) {
     return (
         <div className="App">
             <header className="App-header">
@@ -17,6 +18,16 @@ function About() {
                 >
                     Learn React
                 </a>
+
+                <button
+                    onClick={() => {
+                        auth.login(() => {
+                            console.log(auth.isAuthenticated())
+                            props.history.push("/other");
+                        });
+                    }}
+                >  Login
+                </button>
             </header>
         </div>
     );
